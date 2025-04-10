@@ -2,9 +2,8 @@ const sender = require('../config/email_config')
 const NotificationRepo = require('../repository/notification')
 const notiRepo = new NotificationRepo();
 
-const sendBasicMail = (mailfrom, mailto, mailsubject, mailbody) => {
+const sendBasicMail = (mailto, mailsubject, mailbody) => {
     sender.sendMail({
-        from: mailfrom,
         to: mailto,
         subject: mailsubject,
         text: mailbody
@@ -42,9 +41,26 @@ const createNoti = async (data) => {
 }
 
 
+const subscribeEvents = async (payload) => {
+    let service = payload.service;
+    let data = payload.data;
+    switch (service) {
+        case 'CREATE_NOTIFICATION':
+            await createNoti(data);
+            break;
+        case 'SEND_BASIC_MAIL':
+            await sendBasicMail(data);
+            break;
+        default:
+            console.log('No valid event received');
+            break;
+    }
+}
+
 module.exports = {
     sendBasicMail,
     fetchpendingNoti,
     updateNoti,
-    createNoti
+    createNoti,
+    subscribeEvents
 }
