@@ -1,5 +1,5 @@
 const amqplib = require('amqplib');
-const { MESSAGE_BROKER_URL, EXCHANGE_NAME, REMINDER_BINDING_KEY } = require('../config/serverConfig');
+const { MESSAGE_BROKER_URL, REMINDER_BINDING_KEY, EXCHANGE_NAME } = require('../config/server_config');
 
 const createChannel = async () => {
     try {

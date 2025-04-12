@@ -10,7 +10,6 @@ class NotificationRepo {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     async getNoti(filter) {

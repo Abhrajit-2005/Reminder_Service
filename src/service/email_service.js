@@ -41,6 +41,7 @@ const createNoti = async (data) => {
 }
 
 
+
 const subscribeEvents = async (payload) => {
     let service = payload.service;
     let data = payload.data;
@@ -62,5 +63,5 @@ module.exports = {
     fetchpendingNoti,
     updateNoti,
     createNoti,
-    subscribeEvents
+    subscribeEvents,
 }

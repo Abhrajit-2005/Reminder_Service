@@ -17,7 +17,7 @@ const startserver = async () => {
 
 
     const channel = await createChannel();
-    subscribe(channel, emailService.subscribeEvents, REMINDER_BINDING_KEY);
+    subscribe(channel, emailService.createNoti, REMINDER_BINDING_KEY);
 
     app.listen(PORT, () => {
         console.log(`Server started on port ${PORT}`);
